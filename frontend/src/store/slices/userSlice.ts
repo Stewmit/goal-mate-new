@@ -1,17 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { IUserData } from "@/types/auth";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface UserStateInterface {
-  isAuth: boolean;
-  user: any;
+interface IUserState {
+  user: IUserData | undefined;
 }
 
-interface UserActionInterface {
-  type: string;
-  payload?: any;
-}
-
-const initialState: UserStateInterface = {
-  isAuth: false,
+const initialState: IUserState = {
   user: undefined,
 };
 
@@ -19,15 +13,12 @@ export const userSlice = createSlice({
   name: "user",
   initialState: initialState,
   reducers: {
-    // authorize(state: UserStateInterface, action: UserActionInterface) {
-    //   state.isAuth = action.payload;
-    // },
-    // setUser(state: UserStateInterface, action: UserActionInterface) {
-    //   state.user = action.payload;
-    // },
+    setUser(state, action: PayloadAction<IUserData | undefined>) {
+      state.user = action.payload;
+    },
   },
 });
 
-// export const { authorize, setUser } = userSlice.actions;
+export const { setUser } = userSlice.actions;
 
 export default userSlice.reducer;

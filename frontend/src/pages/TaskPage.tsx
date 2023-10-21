@@ -1,7 +1,12 @@
+import Header from "@/components/header/Header";
 import { FC } from "react";
 
 const TaskPage: FC = () => {
-  return <div>TaskPage</div>;
+  return (
+    <div>
+      <Header />
+    </div>
+  );
 };
 
 export default TaskPage;
